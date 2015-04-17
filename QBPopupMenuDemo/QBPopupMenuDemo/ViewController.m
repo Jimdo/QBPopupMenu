@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    QBPopupMenuItem *item = [QBPopupMenuItem itemWithTitle:@"Hello" target:self action:@selector(action)];
+    QBPopupMenuItem *item  = [QBPopupMenuItem itemWithTitle:@"Hello" target:self action:@selector(action)];
     QBPopupMenuItem *item2 = [QBPopupMenuItem itemWithTitle:@"Cut" target:self action:@selector(action)];
     QBPopupMenuItem *item3 = [QBPopupMenuItem itemWithTitle:@"Copy" target:self action:@selector(action)];
     QBPopupMenuItem *item4 = [QBPopupMenuItem itemWithTitle:@"Delete" target:self action:@selector(action)];
@@ -51,7 +51,7 @@
 - (IBAction)showPlasticPopupMenu:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    [self.plasticPopupMenu showInView:self.view targetRect:button.frame animated:YES];
+    [self.popupMenu showInView:self.view targetRect:button.frame animated:YES];
 }
 
 - (void)action

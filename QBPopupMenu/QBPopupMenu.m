@@ -99,10 +99,9 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
 
 #pragma mark - Managing Popup Menu
 
-- (void)showInView:(UIView *)view targetRect:(CGRect)targetRect animated:(BOOL)animated
-{
+- (void)showInView:(UIView *)view targetRect:(CGRect)targetRect animated:(BOOL)animated {
     if ([self isVisible]) {
-        return;
+        [self removeFromSuperview];
     }
     
     self.view = view;
@@ -157,25 +156,14 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
     // Show page
     [self showPage:0];
     
-    // Create overlay view
-    self.overlayView = ({
-        QBPopupMenuOverlayView *overlayView = [[QBPopupMenuOverlayView alloc] initWithFrame:view.bounds];
-        overlayView.popupMenu = self;
-        
-        overlayView;
-    });
-    
     // Delegate
     if (self.delegate && [self.delegate respondsToSelector:@selector(popupMenuWillAppear:)]) {
         [self.delegate popupMenuWillAppear:self];
     }
     
-    // Show
-    [view addSubview:self.overlayView];
-    
     if (animated) {
         self.alpha = 0;
-        [self.overlayView addSubview:self];
+        [view addSubview:self];
         
         [UIView animateWithDuration:kQBPopupMenuAnimationDuration animations:^(void) {
             self.alpha = 1.0;
@@ -188,7 +176,7 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
             }
         }];
     } else {
-        [self.overlayView addSubview:self];
+        [view addSubview:self];
         
         self.visible = YES;
         
@@ -199,8 +187,7 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
     }
 }
 
-- (void)dismissAnimated:(BOOL)animated
-{
+- (void)dismissAnimated:(BOOL)animated {
     if (![self isVisible]) {
         return;
     }
@@ -215,7 +202,7 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
             self.alpha = 0;
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
-            [self.overlayView removeFromSuperview];
+            //[self.overlayView removeFromSuperview];
             
             self.visible = NO;
             
@@ -226,7 +213,7 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
         }];
     } else {
         [self removeFromSuperview];
-        [self.overlayView removeFromSuperview];
+        //[self.overlayView removeFromSuperview];
         
         self.visible = NO;
         
