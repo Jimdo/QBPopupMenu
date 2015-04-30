@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "JMDPopupMenu"
-  s.version      = "2.2"
+  s.version      = "2.3"
   s.summary      = "Customizable popup menu for iOS."
 
   s.description  = <<-DESC
