@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "QBPopupMenu"
+  s.name         = "JMDPopupMenu"
   s.version      = "2.2"
   s.summary      = "Customizable popup menu for iOS."
 
@@ -40,14 +40,12 @@ Pod::Spec.new do |s|
   #
 
   s.license      = "MIT"
-  s.author             = { "Jimdo GmbH" => "mobileteam@jimdo.com" }
-  # s.authors            = { "Jimdo GmbH" => "email@address.com" }
-
+  s.author       = { "Jimdo GmbH" => "mobileteam@jimdo.com" }
   s.platform     = :ios
 
   #  When using multiple platforms
   s.ios.deployment_target = "7.0"
-  s.source       = { :git => "https://github.com/Jimdo/QBPopupMenu.git", :tag => "v2.2" }
+  s.source       = { :git => "git@github.com:Jimdo/QBPopupMenu.git", :tag => "v2.3" }
   
   s.source_files = ["QBPopupMenu", "QBPopupMenu/**/*.{h,m}"]
 
